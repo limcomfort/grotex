@@ -1,36 +1,54 @@
-/* Цветавая палитра */
+/* Палитра — бумага, чернила, красный акцент */
+$color-paper: #f4f1ea; // фон
+$color-ink: #111110; // основной текст/линии
+$color-ink-2: #4a4844; // вторичный текст
+$color-muted: #8c8880; // подписи
+$color-line: #111110; // линии сетки
+$color-line-2: #dad5c8; // мягкие линии
+$color-accent: #e23e1e; // красный акцент (штампы, номера)
+$color-invert: #f4f1ea; // текст на инверсии
 
-$color-bg: #FAF8F5; // Фон
-$color-surface: #F0EBE1; // Карточки, ховеры
-$color-border: #D8CFC0; // Тонкие линии
-$color-text: #2C2825; // Основной текст
-$color-text-muted: #8A8177; //Дополнительный текст
-$color-accent: #B59A7A; // Акцентный цвет
+/* Шрифты */
+$font-sans: "Inter", system-ui, sans-serif;
+$font-mono: "IBM Plex Mono", "JetBrains Mono", ui-monospace, monospace;
+$font-serif: "Playfair Display", Georgia, serif;
 
-$font-primary: 'Inter', system-ui, -apple-system, sans-senrif; // Основной текст
-$font-display: 'Playfair Display', Geogria, serif; // Акцентный шрифт
+/* Формы — острые углы */
+$radius: 0;
 
-$border-thin: 0.5px; // ширина линий, границ
-$radius-sm: 2px; // закругление максимально маленькое
-$radius-md: 4px;
+/* Ритм — жёсткая сетка 8px */
+$unit: 8px;
 
-$spacing-unit: 8px; // Бзаовый шаг (8px, 16px, 24px, 32px ...)
+/* Границы — всегда 1px, чёрные */
+$stroke: 1px solid $color-ink;
 
+/* Типографика */
+$fs-display: clamp(48px, 12vw, 168px);
+$fs-h1: clamp(36px, 6vw, 72px);
+$fs-h2: clamp(28px, 4vw, 48px);
+$fs-h3: clamp(22px, 2.4vw, 32px);
+$fs-body: 16px;
+$fs-meta: 12px;
+
+/* Анимация */
+$ease: cubic-bezier(0.2, 0, 0, 1);
+
+/* Брейкпоинты */
 $breakpoints: (
-    'sm': 576px,
-    'md': 768px,
-    'lg': 992px,
-    'xl': 1200px,
-    'xxl': 1400px
+  "sm": 576px,
+  "md": 768px,
+  "lg": 992px,
+  "xl": 1200px,
+  "xxl": 1400px,
 );
 
 $container-max-widths: (
-    'sm': 540px,
-    'md': 720px,
-    'lg': 960px,
-    'xl': 1140px,
-    'xxl': 1320px
+  "sm": 540px,
+  "md": 720px,
+  "lg": 960px,
+  "xl": 1140px,
+  "xxl": 1320px,
 );
 
 $grid-columns: 12;
-$grid-gutter: 24px;
+$grid-gutter: 0; /* сетка без отступов — линии вместо пустоты */

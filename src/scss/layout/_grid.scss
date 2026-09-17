@@ -1,55 +1,76 @@
-/* 
-col-1 col-2 ....col-10 col-12
-col-md-4 col-md-12
-col-sm-12
-*/
-
-@use '../utils/variables' as *;
-@use '../utils/mixins' as *;
+@use "../utils/variables" as *;
+@use "../utils/mixins" as *;
 
 .container {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: ($grid-gutter / 2);
-    padding-right: ($grid-gutter / 2);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 calc(#{$unit} * 2);
 
-    @each $breakpoint, $max-width in $container-max-widths {
-        @include media($breakpoint) {
-            max-width: $max-width;
-        }
+  @each $bp, $max in $container-max-widths {
+    @include media($bp) {
+      max-width: $max;
     }
+  }
+}
+
+/* Секция с верхней линией и индексом */
+.section {
+  padding: calc(#{$unit} * 10) 0;
+
+  &__head {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: calc(#{$unit} * 3);
+    padding-bottom: calc(#{$unit} * 3);
+    margin-bottom: calc(#{$unit} * 6);
+    @include hairline(bottom);
+  }
+
+  &__index {
+    grid-column: 1 / 2;
+    @include mono-tag;
+    color: $color-accent;
+  }
+
+  &__title {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    font-size: $fs-h2;
+  }
+
+  &__rule {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    display: block;
+    width: 120px;
+    height: 1px;
+    background: $color-ink;
+  }
 }
 
 .row {
-    display: grid;
-    grid-template-columns: repeat($grid-columns, 1fr);
-    gap: $grid-gutter;
-}
-
-.col {
-    grid-column: span $grid-columns;
+  display: grid;
+  grid-template-columns: repeat($grid-columns, 1fr);
+  gap: 0;
 }
 
 @each $breakpoint in map-keys($breakpoints) {
-    @include media($breakpoint) {
-        // .col-{breakpoint}-{1-12}
-        @for $i from 1 through $grid-columns {
-            .col-#{$breakpoint}-#{$i} {
-                grid-column: span $i;
-            }
-        }
-        // .offset-{breakpoint}-{1-11}
-        @for $i from 1 through ($grid-columns - 1) {
-            .offset-#{$breakpoint}-#{$i} {
-                grid-column-start: $i + 1;
-            }
-        }
-        // .order-{breakpoint}-{1-12}
-        @for $i from 1 through $grid-columns {
-            .order-#{$breakpoint}-#{$i} {
-                order: $i;
-            }
-        }
+  @include media($breakpoint) {
+    @for $i from 1 through $grid-columns {
+      .col-#{$breakpoint}-#{$i} {
+        grid-column: span $i;
+      }
     }
+    @for $i from 1 through ($grid-columns - 1) {
+      .offset-#{$breakpoint}-#{$i} {
+        grid-column-start: $i + 1;
+      }
+    }
+    @for $i from 1 through $grid-columns {
+      .order-#{$breakpoint}-#{$i} {
+        order: $i;
+      }
+    }
+  }
 }

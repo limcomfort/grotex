@@ -9,11 +9,27 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: $font-primary;
-  background-color: $color-bg;
-  color: $color-text;
-  line-height: 1.6;
+  font-family: $font-sans;
+  font-size: $fs-body;
+  line-height: 1.5;
+  background: $color-paper;
+  color: $color-ink;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+
+  /* Тонкая «миллиметровка» на фоне */
+  background-image: linear-gradient(
+      to right,
+      rgba(17, 17, 16, 0.045) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(17, 17, 16, 0.045) 1px, transparent 1px);
+  background-size: 32px 32px;
 }
 
 h1,
@@ -22,45 +38,74 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: $font-display;
-  color: $color-text;
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: $color-ink;
 }
 
 h1 {
-  font-size: (6 * $spacing-unit); // 48
+  font-size: $fs-h1;
+  font-weight: 600;
 }
-
 h2 {
-  font-size: (4 * $spacing-unit); // 32
+  font-size: $fs-h2;
 }
-
 h3 {
-  font-size: (3 * $spacing-unit); // 24
+  font-size: $fs-h3;
 }
 
 h4,
 h5,
 h6 {
-  font-size: (2 * $spacing-unit); // 16
+  font-family: $font-mono;
+  font-size: $fs-meta;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $color-ink-2;
   font-weight: 500;
 }
 
+p {
+  color: $color-ink-2;
+  max-width: 68ch;
+  margin-bottom: calc(#{$unit} * 2);
+}
+
 small {
-  color: $color-text-muted;
+  display: inline-block;
+  @include mono-tag;
+  color: $color-muted;
 }
 
 a {
-  color: $color-accent;
+  color: $color-ink;
+  text-decoration: none;
+  position: relative;
 
-  @include smooth-transition(color);
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 1px;
+    background: currentColor;
+    transform-origin: right;
+    transform: scaleX(0);
+    @include ease(transform);
+  }
 
-  &:hover,
-  .btn:hover & {
-    color: $color-text;
+  &:hover {
+    color: $color-accent;
+    &::after {
+      transform-origin: left;
+      transform: scaleX(1);
+    }
   }
 }
 
-nav a,
-.btn a {
-  text-decoration: none;
+::selection {
+  background: $color-accent;
+  color: $color-invert;
 }

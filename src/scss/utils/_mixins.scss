@@ -1,24 +1,43 @@
-@use 'variables' as *;
+@use "variables" as *;
 
 @mixin media($breakpoint) {
-    @if map-has-key($breakpoints, $breakpoint) {
-        $value: map-get($breakpoints, $breakpoint);
-        @if $value == 0 {
-            @content;
-        } @else {
-            @media (min-width: $value) {
-                @content;
-            }
-        }
+  @if map-has-key($breakpoints, $breakpoint) {
+    $value: map-get($breakpoints, $breakpoint);
+    @if $value == 0 {
+      @content;
     } @else {
-        @warn "Не нашли нужный breakpoint :(";
+      @media (min-width: $value) {
+        @content;
+      }
     }
+  } @else {
+    @warn "Не нашли нужный breakpoint :(";
+  }
 }
 
-@mixin thin-border($color: $color-border) {
-    border: $border-thin solid $color;
+@mixin hairline($side: all, $color: $color-line) {
+  @if $side == all {
+    border: 1px solid $color;
+  } @else if $side == top {
+    border-top: 1px solid $color;
+  } @else if $side == bottom {
+    border-bottom: 1px solid $color;
+  } @else if $side == left {
+    border-left: 1px solid $color;
+  } @else if $side == right {
+    border-right: 1px solid $color;
+  }
 }
 
-@mixin smooth-transition($property: all) {
-    transition: $property 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+@mixin ease($props...) {
+  transition: $props 0.4s $ease;
+}
+
+/* Верхний моно-индекс: 01 / ТЕКСТ */
+@mixin mono-tag {
+  font-family: $font-mono;
+  font-size: $fs-meta;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: $color-ink;
 }

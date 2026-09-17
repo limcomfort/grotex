@@ -1,27 +1,93 @@
 @use "../utils/variables" as *;
 @use "../utils/mixins" as *;
 
+/* Карточка превращается в «строку-модуль» с линиями */
 .card {
-  background-color: $color-bg;
-  padding: (3 * $spacing-unit); // 24 PX
-  border-radius: $radius-md;
+  position: relative;
+  background: transparent;
+  padding: calc(#{$unit} * 4) calc(#{$unit} * 3) calc(#{$unit} * 6);
+  border-radius: 0;
+  border-left: 1px solid $color-ink;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  overflow: hidden;
 
-  @include thin-border();
-  @include smooth-transition();
+  @include ease(background, color);
+
+  &:last-child {
+    border-right: 1px solid $color-ink;
+  }
+
+  /* Красная полоса, которая растёт вверх при ховере */
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 6px;
+    background: $color-accent;
+    transform: scaleX(0);
+    transform-origin: left;
+    @include ease(transform);
+  }
 
   &:hover {
-    border-color: $color-accent;
-    transform: translateY(-2px);
+    background: $color-ink;
+    color: $color-invert;
+
+    &::before {
+      transform: scaleX(1);
+    }
+
+    .card__num,
+    .card__title,
+    .card__text,
+    .card__arrow {
+      color: $color-invert;
+    }
+
+    .card__arrow {
+      transform: translateX(8px);
+    }
+
+    a {
+      color: $color-accent;
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+
+  &__num {
+    @include mono-tag;
+    color: $color-accent;
+    margin-bottom: calc(#{$unit} * 5);
   }
 
   &__title {
-    font-size: (3 * $spacing-unit); // 24 px
-    margin-bottom: (2 * $spacing-unit); // 16 px
+    font-family: $font-sans;
+    font-size: $fs-h3;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    margin-bottom: calc(#{$unit} * 2);
+    line-height: 1.05;
   }
 
   &__text {
-    color: $color-text-muted;
-    font-size: (2.4 * $spacing-unit);
-    line-height: 1.7;
+    color: $color-ink-2;
+    font-size: 15px;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  &__arrow {
+    margin-top: auto;
+    font-family: $font-mono;
+    font-size: 24px;
+    color: $color-ink;
+    @include ease(transform);
   }
 }

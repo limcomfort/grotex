@@ -4,61 +4,105 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>grotex</title>
+    <title>grotex — css kit</title>
   </head>
   <body>
-    <div class="hero">
-      <div class="hero__content">
-        <h1 class="hero__title"><em>GROTEX</em> - это просто и удобно.</h1>
-        <p class="hero__subtitle">
-          Минималистичная CSS библиотека для сайтов в стиле минимализм
-        </p>
-        <div class="btn btn__arrow"><a href="#">Изучить</a></div>
+    <!-- Верхняя строка-шапка -->
+    <header class="topbar">
+      <div class="topbar__inner">
+        <span class="topbar__mark">GROTEX<sup>®</sup></span>
+        <nav class="topbar__nav">
+          <a href="#">Индекс</a>
+          <a href="#">Модули</a>
+          <a href="#">Сетка</a>
+          <a href="#">Контакты</a>
+        </nav>
+        <span class="topbar__meta">v0.1 / 2026</span>
       </div>
-      <div class="hero__visual">
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero__index">
+        <span>01</span>
+        <span>/</span>
+        <span>MANIFESTO</span>
+      </div>
+
+      <h1 class="hero__title">
+        Простая
+        <span class="hero__title-line">CSS-система</span>
+        <span class="hero__title-mark">без лишнего.</span>
+      </h1>
+
+      <div class="hero__meta">
+        <div class="hero__meta-col">
+          <span class="hero__meta-label">Назначение</span>
+          <p>
+            Минималистичный CSS-кит для сайтов, где важна структура, а не
+            украшения.
+          </p>
+        </div>
+        <div class="hero__meta-col">
+          <span class="hero__meta-label">Принципы</span>
+          <ul>
+            <li>Никаких радиусов</li>
+            <li>Одна колонка внимания</li>
+            <li>Типографика как интерфейс</li>
+          </ul>
+        </div>
+        <div class="hero__meta-col">
+          <span class="hero__meta-label">Действие</span>
+          <div class="btn btn--fill"><a href="#">Изучить ↓</a></div>
+        </div>
+      </div>
+
+      <div class="hero__image-wrap">
+        <div class="hero__image-tag">FIG. 01 — HERO</div>
         <img
           class="hero__image"
           src="https://avatars.mds.yandex.net/i?id=d81e91d2ba5f621f1ed0f3fe21da371889fbdd8f-4709556-images-thumbs&n=13"
+          alt=""
         />
       </div>
-    </div>
+    </section>
 
-    <div class="container">
-      <h1 class="">Заголовок 1</h1>
-      <h2 class="">Заголовок 2</h2>
-      <h3 class="">Заголовок 3</h3>
-      <h4 class="">Заголовок 4</h4>
-      <h5 class="">Заголовок 5</h5>
-      <h6 class="">Заголовок 6</h6>
+    <!-- Секция типографики -->
+    <section class="container section">
+      <div class="section__head">
+        <span class="section__index">02 / Типографика</span>
+        <h2 class="section__title">Заголовки и текст</h2>
+        <span class="section__rule"></span>
+      </div>
 
-      <p>
-        Lorem ipsum <a href="#">dolor</a> sit amet consectetur adipisicing elit.
-        Aliquam quia, provident commodi, iste veniam tempora tenetur quo, nihil
-        eius id obcaecati aperiam rem rerum unde inventore eligendi
-        necessitatibus illo? Saepe?
-      </p>
-      <div class="row">
-        <div class="card col-xl-4">
-          <h2 class="card__title">Заголовок карточки</h2>
-          <p class="card__text">
-            Lorem ipsum <a href="#">dolor</a> sit amet consectetur adipisicing
-            elit. Aliquam quia, provident commodi, iste veniam tempora tenetur
-            quo, nihil eius id obcaecati aperiam rem rerum unde inventore
-            eligendi necessitatibus illo? Saepe?
-          </p>
+      <div class="type-specimen">
+        <div class="type-specimen__row">
+          <span class="type-specimen__tag">H1 / Display</span>
+          <h1>Заголовок 1</h1>
         </div>
-        <div class="card col-xl-4">
-          <h2 class="card__title">Заголовок карточки</h2>
-          <p class="card__text">
-            Lorem ipsum <a href="#">dolor</a> sit amet consectetur adipisicing
-            elit. Aliquam quia, provident commodi, iste veniam tempora tenetur
-            quo, nihil eius id obcaecati aperiam rem rerum unde inventore
-            eligendi necessitatibus illo? Saepe?
-          </p>
+        <div class="type-specimen__row">
+          <span class="type-specimen__tag">H2</span>
+          <h2>Заголовок 2</h2>
         </div>
-        <div class="card col-xl-4">
-          <h2 class="card__title">Заголовок карточки</h2>
-          <p class="card__text">
+        <div class="type-specimen__row">
+          <span class="type-specimen__tag">H3</span>
+          <h3>Заголовок 3</h3>
+        </div>
+        <div class="type-specimen__row">
+          <span class="type-specimen__tag">H4</span>
+          <h4>Заголовок 4</h4>
+        </div>
+        <div class="type-specimen__row">
+          <span class="type-specimen__tag">H5</span>
+          <h5>Заголовок 5</h5>
+        </div>
+        <div class="type-specimen__row">
+          <span class="type-specimen__tag">H6</span>
+          <h6>Заголовок 6</h6>
+        </div>
+        <div class="type-specimen__row type-specimen__row--text">
+          <span class="type-specimen__tag">Body</span>
+          <p>
             Lorem ipsum <a href="#">dolor</a> sit amet consectetur adipisicing
             elit. Aliquam quia, provident commodi, iste veniam tempora tenetur
             quo, nihil eius id obcaecati aperiam rem rerum unde inventore
@@ -66,10 +110,68 @@
           </p>
         </div>
       </div>
+    </section>
 
-      <div class="btn btn__arrow"><a href="#">Это кнопка!</a></div>
-      <small>it's small text</small>
-    </div>
+    <!-- Секция «модулей» (карточки) -->
+    <section class="container section">
+      <div class="section__head">
+        <span class="section__index">03 / Модули</span>
+        <h2 class="section__title">Карточки и сетка</h2>
+        <span class="section__rule"></span>
+      </div>
+
+      <div class="row">
+        <article class="card col-xl-4">
+          <span class="card__num">/ 01</span>
+          <h3 class="card__title">Заголовок карточки</h3>
+          <p class="card__text">
+            Lorem ipsum <a href="#">dolor</a> sit amet consectetur adipisicing
+            elit. Aliquam quia, provident commodi.
+          </p>
+          <span class="card__arrow">→</span>
+        </article>
+        <article class="card col-xl-4">
+          <span class="card__num">/ 02</span>
+          <h3 class="card__title">Заголовок карточки</h3>
+          <p class="card__text">
+            Lorem ipsum <a href="#">dolor</a> sit amet consectetur adipisicing
+            elit. Aliquam quia, provident commodi.
+          </p>
+          <span class="card__arrow">→</span>
+        </article>
+        <article class="card col-xl-4">
+          <span class="card__num">/ 03</span>
+          <h3 class="card__title">Заголовок карточки</h3>
+          <p class="card__text">
+            Lorem ipsum <a href="#">dolor</a> sit amet consectetur adipisicing
+            elit. Aliquam quia, provident commodi.
+          </p>
+          <span class="card__arrow">→</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- Секция «Кнопки» -->
+    <section class="container section">
+      <div class="section__head">
+        <span class="section__index">04 / Кнопки</span>
+        <h2 class="section__title">Действия</h2>
+        <span class="section__rule"></span>
+      </div>
+
+      <div class="btn-row">
+        <div class="btn btn--fill"><a href="#">Это кнопка</a></div>
+        <div class="btn btn--line"><a href="#">Вторичная</a></div>
+        <small>it's small text — метаданные, подпись, сноска</small>
+      </div>
+    </section>
+
+    <!-- Подвал-строка -->
+    <footer class="footer">
+      <span>© GROTEX</span>
+      <span>MADE WITH SCSS</span>
+      <span>END.</span>
+    </footer>
 
     <script type="module" src="/src/main.js"></script>
   </body>

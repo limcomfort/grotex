@@ -1,0 +1,20 @@
+@use "../utils/variables" as *;
+@use "../utils/mixins" as *;
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: calc(#{$unit} * 3);
+  padding: calc(#{$unit} * 3) calc(#{$unit} * 4);
+  border-top: 1px solid $color-ink;
+
+  span {
+    @include mono-tag;
+    color: $color-ink-2;
+  }
+
+  span:nth-child(2) {
+    color: $color-accent;
+  }
+}

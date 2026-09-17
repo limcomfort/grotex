@@ -1,5 +1,7 @@
 @use "./base/base" as *;
 @use "./layout/grid" as *;
+@use "./layout/topbar" as *;
+@use "./layout/footer" as *;
 @use "./modules/buttons" as *;
 @use "./modules/cards" as *;
 @use "./modules/hero" as *;

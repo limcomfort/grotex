@@ -4,31 +4,71 @@
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: $spacing-unit;
-  color: $color-accent;
-  padding: (1.2 * $spacing-unit) (2.4 * $spacing-unit);
-  background-color: $color-surface;
+  gap: calc(#{$unit} * 1.5);
+  padding: calc(#{$unit} * 2) calc(#{$unit} * 3);
+  font-family: $font-mono;
+  font-size: $fs-meta;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  border-radius: $radius-sm;
+  border-radius: 0;
   cursor: pointer;
+  user-select: none;
+  position: relative;
+  overflow: hidden;
 
-  @include thin-border();
-  @include smooth-transition();
-
-  &__arrow::after {
-    content: " →";
-    display: inline-block;
-    font-size: (2 * $spacing-unit);
-
-    @include smooth-transition();
-  }
-
-  &:hover {
-    color: $color-text;
-    background-color: $color-border;
-    border-color: $color-text;
-    &.btn__arrow::after {
-      transform: translateX(4px);
+  a {
+    color: inherit;
+    &::after {
+      display: none;
     }
   }
+
+  /* Заливка снизу вверх */
+  &--fill {
+    background: $color-ink;
+    color: $color-invert;
+    border: 1px solid $color-ink;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: $color-accent;
+      transform: translateY(101%);
+      @include ease(transform);
+      z-index: 0;
+    }
+
+    a {
+      position: relative;
+      z-index: 1;
+    }
+
+    &:hover {
+      color: $color-invert;
+      &::before {
+        transform: translateY(0);
+      }
+    }
+  }
+
+  /* Только контур */
+  &--line {
+    background: transparent;
+    color: $color-ink;
+    border: 1px solid $color-ink;
+
+    &:hover {
+      background: $color-ink;
+      color: $color-invert;
+    }
+  }
+}
+
+/* Ряд кнопок в секции «Кнопки» */
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(#{$unit} * 3);
 }

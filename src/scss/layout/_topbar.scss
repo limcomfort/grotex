@@ -1,0 +1,59 @@
+@use "../utils/variables" as *;
+@use "../utils/mixins" as *;
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: $color-paper;
+  border-bottom: 1px solid $color-ink;
+
+  &__inner {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: calc(#{$unit} * 4);
+    padding: calc(#{$unit} * 2) calc(#{$unit} * 4);
+  }
+
+  &__mark {
+    font-family: $font-mono;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+
+    sup {
+      color: $color-accent;
+      font-size: 9px;
+      vertical-align: super;
+    }
+  }
+
+  &__nav {
+    display: none;
+    gap: calc(#{$unit} * 4);
+    justify-content: center;
+
+    @include media("md") {
+      display: flex;
+    }
+
+    a {
+      font-family: $font-mono;
+      font-size: $fs-meta;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: $color-ink-2;
+
+      &:hover {
+        color: $color-accent;
+      }
+    }
+  }
+
+  &__meta {
+    @include mono-tag;
+    color: $color-muted;
+  }
+}
